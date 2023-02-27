@@ -1,0 +1,501 @@
+\documentclass[12pt]{report}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage[
+a4paper, includefoot,
+left=20mm, right=10mm, top=20mm, bottom=20mm,
+headsep=1cm, footskip=1cm
+]{geometry}
+
+\usepackage{amsfonts}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{indentfirst} 
+\usepackage{graphicx}
+\usepackage{csquotes} 
+\usepackage[justification=centering]{caption}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{subcaption}
+
+
+\begin{document}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_normal_10.pdf}
+			\caption*{$n = 10$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_normal_50.pdf}
+			\caption*{$n = 50$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_normal_1000.pdf}
+			\caption*{$n = 1000$}
+		\end{subfigure}
+		\caption{Нормальное распределение}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_cauchy_10.pdf}
+			\caption*{$n = 10$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_cauchy_50.pdf}
+			\caption*{$n = 50$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_cauchy_1000.pdf}
+			\caption*{$n = 1000$}
+		\end{subfigure}
+		\caption{Распределение Коши}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_laplace_10.pdf}
+			\caption*{$n = 10$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_laplace_50.pdf}
+			\caption*{$n = 50$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_laplace_1000.pdf}
+			\caption*{$n = 1000$}
+		\end{subfigure}
+		\caption{Распределение Лапласа}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_poisson_10.pdf}
+			\caption*{$n = 10$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_poisson_50.pdf}
+			\caption*{$n = 50$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_poisson_1000.pdf}
+			\caption*{$n = 1000$}
+		\end{subfigure}
+		\caption{Распределение Пуассона}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_uniform_10.pdf}
+			\caption*{$n = 10$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_uniform_50.pdf}
+			\caption*{$n = 50$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/hists/hist_uniform_1000.pdf}
+			\caption*{$n = 1000$}
+		\end{subfigure}
+		\caption{Равномерное распределение}
+	\end{figure}
+	
+	\begin{table}[H]
+		\centering
+		\input{../figures/chars/chars_normal.tex}
+		\caption{Нормальное распределение}
+	\end{table}
+	\begin{table}[H]
+		\centering
+		\input{../figures/chars/chars_cauchy.tex}
+		\caption{Распределение Коши}
+	\end{table}
+	\begin{table}[H]
+		\centering
+		\input{../figures/chars/chars_laplace.tex}
+		\caption{Распределение Лапласа}
+	\end{table}
+	\begin{table}[H]
+		\centering
+		\input{../figures/chars/chars_poisson.tex}
+		\caption{Распределение Пуассона}
+	\end{table}
+	\begin{table}[H]
+		\centering
+		\input{../figures/chars/chars_uniform.tex}
+		\caption{Равномерное распределение}
+	\end{table}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_normal.pdf}
+		\caption{Нормальное распределение}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_cauchy.pdf}
+		\caption{Распределение Коши}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_laplace.pdf}
+		\caption{Распределение Лапласа}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_poisson.pdf}
+		\caption{Распределение Пуассона}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_uniform.pdf}
+		\caption{Равномерное распределение}
+	\end{figure}
+
+	\begin{table}[H]
+		\centering
+		\input{../figures/fliers/fliers.tex}
+		\caption{Доля выбросов}
+	\end{table}
+
+	\begin{table}[H]
+		\centering
+		\input{../figures/fliers/theoretic_fliers.tex}
+		\caption{Теоретическая вероятность выбросов}
+	\end{table}
+
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_normal_20.pdf}
+			\caption*{$n = 20$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_normal_60.pdf}
+			\caption*{$n = 60$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_normal_100.pdf}
+			\caption*{$n = 100$}
+		\end{subfigure}
+		\caption{Нормальное распределение}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_cauchy_20.pdf}
+			\caption*{$n = 20$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_cauchy_60.pdf}
+			\caption*{$n = 60$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_cauchy_100.pdf}
+			\caption*{$n = 100$}
+		\end{subfigure}
+		\caption{Распределение Коши}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_laplace_20.pdf}
+			\caption*{$n = 20$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_laplace_60.pdf}
+			\caption*{$n = 60$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_laplace_100.pdf}
+			\caption*{$n = 100$}
+		\end{subfigure}
+		\caption{Распределение Лапласа}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_poisson_20.pdf}
+			\caption*{$n = 20$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_poisson_60.pdf}
+			\caption*{$n = 60$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_poisson_100.pdf}
+			\caption*{$n = 100$}
+		\end{subfigure}
+		\caption{Распределение Пуассона}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_uniform_20.pdf}
+			\caption*{$n = 20$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_uniform_60.pdf}
+			\caption*{$n = 60$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/empiriccdfs/empiriccdf_uniform_100.pdf}
+			\caption*{$n = 100$}
+		\end{subfigure}
+		\caption{Равномерное распределение}
+	\end{figure}
+
+
+
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_20_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_20_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_20_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Нормальное распределение, $n = 20$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_60_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_60_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_60_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Нормальное распределение, $n = 60$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_100_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_100_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_normal_100_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Нормальное распределение, $n = 100$}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_20_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_20_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_20_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Коши, $n = 20$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_60_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_60_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_60_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Коши, $n = 60$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_100_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_100_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_cauchy_100_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Коши, $n = 100$}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_20_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_20_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_20_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Лапласа, $n = 20$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_60_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_60_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_60_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Лапласа, $n = 60$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_100_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_100_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_laplace_100_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Лапласа, $n = 100$}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_20_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_20_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_20_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Пуассона, $n = 20$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_60_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_60_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_60_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Пуассона, $n = 60$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_100_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_100_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_poisson_100_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Распределение Пуассона, $n = 100$}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_20_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_20_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_20_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Равномерное распределение, $n = 20$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_60_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_60_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_60_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Равномерное распределение, $n = 60$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_100_0.5h.pdf}
+			\caption*{$h = h_n/2$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_100_1.0h.pdf}
+			\caption*{$h = h_n$}
+		\end{subfigure}
+		\begin{subfigure}[t]{.3\linewidth}
+			\centering\includegraphics[width=\linewidth]{../figures/kernels/kernel_uniform_100_2.0h.pdf}
+			\caption*{$h = 2h_n$}
+		\end{subfigure}
+		\caption{Равномерное распределение, $n = 100$}
+	\end{figure}
+	
+\end{document}
