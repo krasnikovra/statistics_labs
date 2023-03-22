@@ -79,8 +79,6 @@ def mean_and_var_of_characteristics(distribution: Distribution,
             for (upper_char, upper_char_head) in zip(upper_chars, upper_chars_heads):
                 row = [np.round(upper_char(generate_characteristic(distribution, char, size, repeats)), 4).astype(str)
                        for char in chars]
-                lol = upper_char_head
-                kek = ' & '.join(row)
                 file.write(f"{upper_char_head} & {' & '.join(row)} \\\\ \\hline \n")
 
             for _ in chars:
