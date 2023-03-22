@@ -1,4 +1,4 @@
-\documentclass[12pt]{report}
+\documentclass[12pt]{article}
 
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -22,9 +22,267 @@ headsep=1cm, footskip=1cm
 \usepackage{float}
 \usepackage{pdfpages}
 \usepackage{subcaption}
+\usepackage[hidelinks]{hyperref}
 
+\DeclareMathOperator{\med}{med}
 
 \begin{document}
+	\begin{titlepage}
+		\begin{center}
+			\textsc{Санкт-Петербургский политехнический университет\\Петра Великого\\[5mm]
+				Физико-механический институт\\[2mm]
+				Кафедра «Прикладная математика»}
+			
+			\vfill
+			
+			\textbf{Отчет\\по лабораторным работам №1-4\\по дисциплине\\«Математическая статистика»
+				\\[26mm]
+			}
+		\end{center}
+		
+		\noindent
+		\hspace*{100mm} Выполнил студент:\\[3mm]
+		\hspace*{100mm} Красников Роман Андреевич\\
+		\hspace*{100mm} группа: 5030102/00101\\[10mm]
+		\hspace*{100mm} Проверил:\\[3mm]
+		\hspace*{100mm} к.ф.-м.н., доцент\\
+		\hspace*{100mm} Баженов Александр Николаевич
+		
+		\vspace*{\fill}
+		\begin{center}
+			Санкт-Петербург\\2023 г.
+		\end{center}
+	\end{titlepage}
+
+	\section{Постановка задачи}
+	
+	Для 5 распределений
+	
+	\begin{itemize}
+		\item Нормальное распределение $N(x,0,1)$
+		\item Распределение Коши $C(x, 0, 1)$
+		\item Распределение Лапласа $L\left(x, 0, \dfrac{1}{\sqrt{2}}\right)$
+		\item Распределение Пуассона $P(k, 10)$
+		\item Равномерное распределение $U(x, -\sqrt{3}, \sqrt{3})$
+	\end{itemize}
+
+	\begin{enumerate}
+		\item Сгенерировать выборки размером 10, 50 и 1000 элементов. Построить на одном рисунке гистограмму и график плотности распределения.
+		\item  Сгенерировать выборки размером 10, 100 и 1000 элементов.	Для каждой выборки вычислить следующие статистические характеристики положения данных: $\overline{x}, \med x, z_R, z_Q, z_{\text{tr}}$ . Повторить такие вычисления 1000 раз для каждой выборки и найти среднее характеристик положения и их квадратов:
+		\begin{equation}
+			E(z) = \overline{z}
+		\end{equation}
+		Вычислить оценку дисперсии по формуле:
+		\begin{equation}
+			D(z) = \overline{z^2} - \overline{z}^2
+		\end{equation}
+		Представить полученные данные в виде таблиц.
+		\item Сгенерировать выборки размером 20 и 100 элементов. Построить для них боксплот Тьюки.
+		Для каждого распределения определить долю выбросов экспериментально (сгенерировав выборку, соответствующую распределению 1000 раз, и вычислив среднюю долю выбросов) и сравнить с результатами, полученными теоретически.
+		\item Сгенерировать выборки размером 20, 60 и 100 элементов. Построить на них эмпирические функции распределения и ядерные оценки плотности распределения на отрезке [-4, 4] для непрерывных распределений и на отрезке [6; 14] для распределения Пуассона.
+	\end{enumerate}
+
+	\section{Теория}
+	
+	\subsection{Рассматриваемые распределения}
+	
+	Плотности:
+	
+	\begin{itemize}
+		\item Нормальное распределение 
+		\begin{equation}
+			N(x,0,1)=\dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
+		\end{equation}
+		\item Распределение Коши
+		\begin{equation}
+			C(x,0,1)=\dfrac{1}{\pi}\dfrac{1}{x^2 + 1}
+		\end{equation}
+		\item Распределение Лапласа
+		\begin{equation}
+			L\left(x,0,\dfrac{1}{\sqrt{2}}\right)=\dfrac{1}{\sqrt{2}}e^{-\sqrt{2}|x|}
+		\end{equation}
+		\item Распределение Пуассона
+		\begin{equation}
+			P(k, 10)=\dfrac{10^k}{k!}e^{-10}
+		\end{equation}
+		\item Равномерное распределение
+		\begin{equation}
+			U(x, -\sqrt{3}, \sqrt{3}) = 
+			\begin{dcases}
+				\dfrac{1}{2\sqrt{3}}\ &\text{при}\ |x|\leq\sqrt{3}\\
+				0\ &\text{при}\ |x|>\sqrt{3}
+			\end{dcases}
+		\end{equation}
+	\end{itemize}
+	
+	\subsection{Гистограмма}
+	
+	\subsubsection{Построение гистограммы}
+	
+	Множество значений, которое может принимать элемент выборки, разбивается на несколько интервалов. Чаще всего эти интервалы берут одинаковыми, но это не является строгим требованием. Эти интервалы откладываются на горизонтальной оси, затем над каждым рисуется прямоугольник. Если все интервалы были одинаковыми, то высота каждого прямоугольника пропорциональна числу элементов выборки, попадающих в соответствующий интервал. Если интервалы разные, то высота прямоугольника выбирается таким образом, чтобы его площадь была пропорциональна числу элементов	выборки, которые попали в этот интервал.
+	
+	\subsection{Вариационный ряд}
+	
+	Вариационным ряд - последовательность элементов выборки, расположенных в неубывающем порядке. Одинаковые элементы повторяются.
+	
+	\subsection{Выборочные числовые характеристики}
+	
+	\subsubsection{Характеристики положения}
+	
+	\begin{itemize}
+		\item Выборочное среднее
+		\begin{equation}
+			\overline{x} = \dfrac{1}{n}\sum\limits_{i=1}^nx_i
+		\end{equation}
+		\item Выборочная медиана
+		\begin{equation}
+			\med x = 
+			\begin{dcases}
+				x_{(l+1)}\ &\text{при}\ n = 2l+1\\
+				\dfrac{x_{(l)} + x_{(l+1)}}{2}\ &\text{при}\ n = 2l
+			\end{dcases}
+		\end{equation}
+		\item Полусумма экстремальных элементов
+		\begin{equation}
+			z_R = \dfrac{x_{(1)} + x_{(n)}}{2}
+		\end{equation}
+		\item Полусумма квартилей\\
+		Выборочный квартиль $z_p$ порядка $p$ определяется формулой
+		\begin{equation}
+			z_p = 
+			\begin{dcases}
+				x_{([np]+1)}\ &\text{при}\ np\ \text{дробном}\\
+				x_{(np)}\ &\text{при}\ np\ \text{целом}
+			\end{dcases}
+		\end{equation}
+		Полусумма квартилей
+		\begin{equation}
+			z_Q = \dfrac{z_{1/4} + z_{3/4}}{2}
+		\end{equation}
+		\item Усеченное среднее
+		\begin{equation}
+			\overline{x} = \dfrac{1}{n - 2r}\sum\limits_{i=r + 1}^{n-r}x_{(i)},\ r\approx\dfrac{n}{4}
+		\end{equation}
+	\end{itemize}
+
+	\subsubsection{Характеристики рассеяния}
+	
+	Выборочная дисперсия 
+	\begin{equation}
+		D = \dfrac{1}{n}\sum\limits_{i=1}^n(x_i-\overline{x})^2
+	\end{equation}
+	
+	\subsection{Боксплот Тьюки}
+	
+	Границами ящика – первый и третий квартили, линия в середине ящика -- медиана. Концы усов -- края статистически значимой выборки (без выбросов). Длина <<усов>>:
+	\begin{equation} \label{boxplots_edges}
+		X_1 = Q_1 - \dfrac{3}{2}(Q_3-Q_1),\ X_2 = Q_3 + \dfrac{3}{2}(Q_3-Q_1)
+	\end{equation}
+	где $X_1$ — нижняя граница уса, $X_2$ — верхняя граница уса, $Q_1$ — первый квартиль, $Q_3$ — третий квартиль. Данные, выходящие за границы усов (выбросы), отображаются на графике в виде маленьких кружков.
+	
+	\subsection{Теоретическая вероятность выбросов}
+	
+	Можно вычислить теоретические первый и третий квартили распределений -- $Q_1^T$ и $Q_3^T$. По формуле \eqref{boxplots_edges} – теоретические нижнюю и верхнюю границы уса $X_1^T$ и $X_2^T$. Выбросы -- величины $x$:
+	
+	\begin{equation}
+		\left[
+		\begin{gathered}
+			x < X_1^T\\
+			x > X_2^T
+		\end{gathered}\right.
+	\end{equation}
+
+	Теоретическая вероятность выбросов:
+	\begin{itemize}
+		\item для непрерывных распределений
+		\begin{equation}
+			P_{\text{в}}^T = P(x < X_1^T) + P(x > X_2^T) = F(X_1^T) + \left(1-F(X_2^T)\right)
+		\end{equation}
+		\item для дискретных распределений
+		\begin{equation}
+			P_{\text{в}}^T = P(x < X_1^T) + P(x > X_2^T) = \left(F(X_1^T) - P(x = X_1^T)\right) + \left(1-F(X_2^T)\right)
+		\end{equation}
+	\end{itemize}
+	
+	Выше $F(X) = P(x \leq X)$ -- функция распределения.
+	
+	\subsection{Эмпирическая функция распределения}
+	
+	\subsubsection{Статистический ряд}
+	
+	Статистический ряд – последовательность различных элементов выборки $z_1,\dots,z_k$ расположенных в возрастающем порядке с указанием частот $n_1,\dots,n_k$, с которыми эти элементы содержатся в выборке. Обычно записывается в виде таблицы.
+	
+	\subsubsection{Эмпирическая функция распределения}
+	
+	Эмпирическая (выборочная) функция распределения (э. ф. р.) – относительная частота события $X < x$, полученная по данной выборке:
+	\begin{equation}
+		F^*_n(x) = P^*(X < x)
+	\end{equation}
+	
+	\subsubsection{Нахождение э. ф. р.}
+	
+	Для получения относительной частоты $P^*(X < x)$ просуммируем в статистическом ряде, построенном по данной выборке, все частоты $n_i$, для которых элементы $z_i$ статистического ряда меньше $x$. Тогда $P^*(X < x) = \dfrac{1}{n}\sum\limits_{z_i < x}n_i$. Получаем
+	\begin{equation}
+		F^*_n(x) = \dfrac{1}{n}\sum\limits_{z_i < x}n_i
+	\end{equation}
+
+	$F^*(x)$ -- функция распределения дискретной случайной величины $X^*$, заданной таблицей распределения
+	\begin{table}
+		\centering
+		\begin{tabular}{|c|c|c|c|c|} \hline
+			$X^*$ & $z_1$ & $z_2$ & $\dots$ & $z_k$ \\ \hline
+			\rule{0pt}{15pt}$P$ & $\dfrac{n_1}{n}$ & $\dfrac{n_2}{n}$ & $\dots$ & $\dfrac{n_k}{n}$ \\ \hline
+		\end{tabular}
+		\caption{Таблица распределения}
+	\end{table}
+
+	Эмпирическая функция распределения является оценкой, т. е. приближенным значением, генеральной функции распределения
+	\begin{equation}
+		F^*_n(x)\approx F_X(x)
+	\end{equation}
+
+	\subsection{Оценки плотности вероятности}
+	
+	\subsubsection{Определение}
+	
+	Оценкой плотности вероятности $f(x)$ называется функция $\widehat{f}(x)$, построенная на основе выборки, приближенно равная $f(x)$:
+	\begin{equation}
+		\widehat{f}(x) \approx f(x)
+	\end{equation}
+
+	\subsubsection{Ядерные оценки}
+	
+	Представим оценку в виде суммы с числом слагаемых, равным объему выборки:
+	\begin{equation}
+		\widehat{f}_n(x) = \dfrac{1}{nh_n}\sum\limits_{i=1}^nK\left(\dfrac{x-x_i}{h_n}\right)
+	\end{equation}
+
+	Здесь функция $K(u)$ называемая ядерной (ядром), непрерывна и является
+	плотностью вероятности, $x_1,\dots,x_n$ -- элементы выборки, $\{h_n\}_{n\in\mathbb{N}}$ -- любая последовательность положительных чисел, обладающая свойствами
+	\begin{equation}
+		h_n \xrightarrow[n\rightarrow\infty]{} 0;\ \dfrac{h_n}{n^{-1}}\xrightarrow[n\rightarrow\infty]{}\infty
+	\end{equation}
+	Такие оценки называются непрерывными ядерными.
+	
+	Гауссово (нормальное) ядро
+	\begin{equation}
+		K(u) = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{u^2}{2}}
+	\end{equation}
+	
+	Правило Сильвермана
+	\begin{equation}
+		h_n = 1.06\hat{\sigma}n^{-1/5}
+	\end{equation}
+	где $\hat{\sigma}$ -- выборочное стандартное отклонение
+	
+	\section{Реализация}
+	
+	Лабораторная работа выполнена с помощью языка программирования Python 3.8 и модулей numpy, scipy.stats (для генерации выборок), matplotlib.pyplot (для рисования графиков) в среде разработки PyCharm. Исходный код программы и отчета загружен на GitHub: \url{https://github.com/krasnikovra/statistics_labs}
+	
+	\section{Результаты}
+	
+	\subsection{Гистограмма и график плотности распределения}
+	
 	\begin{figure}[H]
 		\centering
 		\begin{subfigure}[t]{.3\linewidth}
@@ -105,6 +363,8 @@ headsep=1cm, footskip=1cm
 		\end{subfigure}
 		\caption{Равномерное распределение}
 	\end{figure}
+
+	\subsection{Характеристики положения и рассеяния}
 	
 	\begin{table}[H]
 		\centering
@@ -132,31 +392,35 @@ headsep=1cm, footskip=1cm
 		\caption{Равномерное распределение}
 	\end{table}
 
+	\subsection{Боксплот Тьюки}
+
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_normal.pdf}
+		\includegraphics[scale=0.85]{../figures/boxplots/boxplot_normal.pdf}
 		\caption{Нормальное распределение}
 	\end{figure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_cauchy.pdf}
+		\includegraphics[scale=0.85]{../figures/boxplots/boxplot_cauchy.pdf}
 		\caption{Распределение Коши}
 	\end{figure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_laplace.pdf}
+		\includegraphics[scale=0.85]{../figures/boxplots/boxplot_laplace.pdf}
 		\caption{Распределение Лапласа}
 	\end{figure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_poisson.pdf}
+		\includegraphics[scale=0.85]{../figures/boxplots/boxplot_poisson.pdf}
 		\caption{Распределение Пуассона}
 	\end{figure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.9]{../figures/boxplots/boxplot_uniform.pdf}
+		\includegraphics[scale=0.85]{../figures/boxplots/boxplot_uniform.pdf}
 		\caption{Равномерное распределение}
 	\end{figure}
+
+	\subsection{Доля выбросов}
 
 	\begin{table}[H]
 		\centering
@@ -164,11 +428,15 @@ headsep=1cm, footskip=1cm
 		\caption{Доля выбросов}
 	\end{table}
 
+	\subsection{Теоретическая вероятность выбросов}
+
 	\begin{table}[H]
 		\centering
 		\input{../figures/fliers/theoretic_fliers.tex}
 		\caption{Теоретическая вероятность выбросов}
 	\end{table}
+
+	\subsection{Эмпирическая функция распределения}
 
 	\begin{figure}[H]
 		\centering
@@ -251,7 +519,7 @@ headsep=1cm, footskip=1cm
 		\caption{Равномерное распределение}
 	\end{figure}
 
-
+	\subsection{Ядерные оценки плотности распределения}
 
 	\begin{figure}[H]
 		\centering
