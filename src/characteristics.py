@@ -1,3 +1,5 @@
+import math
+
 import numpy as np
 from typing import *
 from distribution import Distribution
@@ -29,7 +31,7 @@ def truncated_mean(sorted_data: np.ndarray):
     n = len(sorted_data)
     r = int(np.round(n / 4))
     res = 0
-    for i in range(r+1, n-r+1):
+    for i in range(r + 1, n - r + 1):
         res += sorted_data[i] / (n - 2 * r)
     return res
 
@@ -76,10 +78,16 @@ def mean_and_var_of_characteristics(distribution: Distribution,
 
             file.write(f" & {' & '.join(chars_heads)} \\\\ \\hline \n")
 
-            for (upper_char, upper_char_head) in zip(upper_chars, upper_chars_heads):
-                row = [np.round(upper_char(generate_characteristic(distribution, char, size, repeats)), 4).astype(str)
-                       for char in chars]
-                file.write(f"{upper_char_head} & {' & '.join(row)} \\\\ \\hline \n")
+            mean_row = [mean(generate_characteristic(distribution, char, size, repeats))
+                        for char in chars]
+            file.write(f"$E(z)$ & {' & '.join([np.round(x, 4).astype(str) for x in mean_row])} \\\\ \\hline \n")
+            variance_row = [var(generate_characteristic(distribution, char, size, repeats))
+                            for char in chars]
+            file.write(f"$D(z)$ & {' & '.join([np.round(x, 4).astype(str) for x in variance_row])} \\\\ \\hline \n")
+            mean_pm_std_row = [(e - math.sqrt(d), e + math.sqrt(d)) for (e, d) in zip(mean_row, variance_row)]
+            mean_pm_std_row_str = [f"\\scriptsize{{[{np.round(a, 4).astype(str)}, {np.round(b, 4).astype(str)}]}}" for (a, b) in
+                                   mean_pm_std_row]
+            file.write(f"$E\pm \sqrt" + "{D(z)}$" + f" & {' & '.join(mean_pm_std_row_str)} \\\\ \\hline \n")
 
             for _ in chars:
                 file.write("& ")
