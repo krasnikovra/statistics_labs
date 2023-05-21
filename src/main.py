@@ -172,11 +172,6 @@ def related_mode_width(interval_data, mode):
     return mode.wid / data_union(interval_data).wid
 
 
-m = Interval(-0.11, 0.30)
-sigma = Interval(0.90, 1.19)
-print(f"[{m - sigma}, {m + sigma}]")
-
-
 data = load_csv("../data/Channel_1_500nm_0_23mm.csv")
 draw_data(data, folder="../figures")
 
